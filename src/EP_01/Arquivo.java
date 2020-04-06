@@ -1,6 +1,5 @@
 package EP_01;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
 public class Arquivo{
@@ -19,8 +18,7 @@ public class Arquivo{
         boolean flag = true;
         long check = -1;
         lista.inicializarLista();
-        String fileName = entrada;
-        File file = new File(fileName);
+        File file = new File(entrada);
 
         try{
             Scanner sc = new Scanner(file);
