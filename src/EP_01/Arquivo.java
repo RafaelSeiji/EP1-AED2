@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-protected class Arquivo{
+public class Arquivo{
 
     protected int localx;
     protected int localy;
@@ -11,19 +11,22 @@ protected class Arquivo{
 
     private Lista lista = new Lista();
 
-    protected void extrair{
+    protected void extrair(){
 
+        Scanner in = new Scanner(System.in);
+        String entrada = in.nextLine();
+        
         boolean flag = true;
         long check = -1;
         lista.inicializarLista();
-        String fileName = "OD_2017.csv";
+        String fileName = entrada;
         File file = new File(fileName);
 
         try{
             Scanner sc = new Scanner(file);
             while(sc.hasNext()){
                 String data = sc.next();
-                String[] valores = data.split(','); //Pegar as posições 2, 3 e 43
+                String[] valores = data.split(","); //Pegar as posições 2, 3 e 43
                 if(flag) flag = false;
                 else{
                     int x = Integer.parseInt(valores[2]);

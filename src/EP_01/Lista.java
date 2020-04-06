@@ -5,6 +5,7 @@ public class Lista{
     protected int coordenada_x;
     protected int coordenada_y;
     protected long frequentadores;
+    protected Lista prox;
     static protected Lista inicio;
     static protected Lista ultimo;
 
@@ -35,8 +36,8 @@ public class Lista{
     }
 
     static void printarNo(Lista no){
-        System.out.print("x: "+no.cordenada_x+" ");
-        System.out.print("y: "+no.cordenada_y+" ");
+        System.out.print("x: "+no.coordenada_x+" ");
+        System.out.print("y: "+no.coordenada_y+" ");
         System.out.println("f: "+no.frequentadores);
     }
 
