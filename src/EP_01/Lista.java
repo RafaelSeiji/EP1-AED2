@@ -2,17 +2,12 @@ package EP_01;
 import java.util.*;
 public class Lista{
 
-    protected int coordenada_x;
-    protected int coordenada_y;
-    protected long frequentadores;
-    protected Lista prox;
-    static protected Lista inicio;
-    static protected Lista ultimo;
+    protected No inicio;
+    protected No ultimo;
 
 
-
-    static Lista criarNo(int x, int y, long f){
-        Lista novo = new Lista();
+    static No criarNo(int x, int y, long f){
+        No novo = new No();
         novo.coordenada_x = x;
         novo.coordenada_y = y;
         novo.frequentadores = f;
@@ -20,29 +15,31 @@ public class Lista{
         return novo;
     }
 
-    static void inicializarLista(){
-        inicio = null;
+    static void inicializarLista(Lista lista){
+        lista.inicio = null;
+        lista.ultimo = null;
     }
 
-    static void addLista(Lista no){
-        if(inicio == null){
-            inicio = no;
-            ultimo = no;
+    static void addLista(Lista lista, No no){
+        if(lista.inicio == null){
+            lista.inicio = no;
+            lista.ultimo = no;
         }
         else{
-            ultimo.prox = no;
+            lista.ultimo.prox = no;
+            lista.ultimo = no;
             no.prox = null;
         }
     }
 
-    static void printarNo(Lista no){
+    static void printarNo(No no){
         System.out.print("x: "+no.coordenada_x+" ");
         System.out.print("y: "+no.coordenada_y+" ");
         System.out.println("f: "+no.frequentadores);
     }
 
-    static void printarLista(){
-        Lista atual = inicio;
+    static void printarLista(Lista lista){
+        No atual = lista.inicio;
         while(atual.prox != null){
             printarNo(atual);
             atual = atual.prox;
