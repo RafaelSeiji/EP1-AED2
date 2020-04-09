@@ -11,12 +11,12 @@ import org.jfree.ui.RefineryUtilities;
 
 public class Grafico extends ApplicationFrame {
 
-    protected Grafico(String tituloApp, String tituloGrafico){
-        super(tituloApp);
-        JFreeChart barChart = ChartFactory.createBarChart(tituloGrafico,"IDs","Valores",
-                                                          createDataset(), PlotOrientation.VERTICAL, true, true, false);
+    protected Grafico(String applicationTitle , String chartTitle, Lista lista ){
+        super(applicationTitle );
+        JFreeChart barChart = ChartFactory.createBarChart(applicationTitle ,"IDs","Valores",
+                                                          createDataset(lista), PlotOrientation.VERTICAL, false, true, false);
         ChartPanel chartPanel = new ChartPanel(barChart);
-        chartPanel.setPreferredSize(new java.awt.Dimension(560, 367));
+        chartPanel.setPreferredSize(new java.awt.Dimension(1920, 1080));
         setContentPane(chartPanel);
     }
 
@@ -26,9 +26,15 @@ public class Grafico extends ApplicationFrame {
         else{
             No aux = lista.inicio;
             while (aux.prox != null){
-                dataset.addValue();
+                String cox = Integer.toString(aux.coordenada_x);
+                String coy = Integer.toString(aux.coordenada_y);
+                String concat = cox + "_" + coy;
+                dataset.addValue((aux.frequentadores.size()-1),concat,"Frequentadores");
+                aux = aux.prox;
             }
         }
+        return dataset;
     }
 
 }
+

@@ -6,11 +6,11 @@ public class Lista{
     protected No ultimo;
 
 
-    static No criarNo(int x, int y, long f){
+    static No criarNo(int x, int y, Float ID){
         No novo = new No();
         novo.coordenada_x = x;
         novo.coordenada_y = y;
-        novo.frequentadores = f;
+        novo.frequentadores.add(ID);
         novo.prox = null;
         return novo;
     }
@@ -32,10 +32,37 @@ public class Lista{
         }
     }
 
+    static boolean existeCoord(Lista lista, int coord_x, int coord_y){
+        if(lista.inicio == null) return false;
+        No aux = lista.inicio;
+        do{
+            if(aux.coordenada_x == coord_x && aux.coordenada_y == coord_y) return true;
+            aux = aux.prox;
+        }while (aux != null);
+
+        return false;
+    }
+
+    static No returnNo(Lista lista, int coord_x, int coord_y){
+        No aux = lista.inicio;
+        do{
+            if(aux.coordenada_x == coord_x && aux.coordenada_y == coord_y) return aux;
+            aux = aux.prox;
+        }while (aux != null);
+        return null;
+    }
+
+    static boolean existeID(No no, Float ID){
+        if(no.frequentadores.contains(ID)) return true;
+        else return false;
+    }
+
     static void printarNo(No no){
         System.out.print("x: "+no.coordenada_x+" ");
         System.out.print("y: "+no.coordenada_y+" ");
-        System.out.println("f: "+no.frequentadores);
+        for(int i = 0; i < no.frequentadores.size(); i++){
+            System.out.println("f: "+no.frequentadores.get(i));
+        }
     }
 
     static void printarLista(Lista lista){

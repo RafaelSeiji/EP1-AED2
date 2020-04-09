@@ -5,7 +5,7 @@ import java.util.*;
 public class Arquivo{
 
 
-    protected void extrair(String caminho){
+    protected Lista extrair(String caminho){
 
         Lista lista = new Lista();
 
@@ -23,18 +23,24 @@ public class Arquivo{
                 String[] valores = data.split(","); //Pegar as posições 2, 3 e 43
                 int x = Integer.parseInt(valores[2]);
                 int y = Integer.parseInt(valores[3]);
-                long f = Long.parseLong(valores[43]);
-                if (check != f) {
+                Float f = Float.parseFloat(valores[43]);
+                if(lista.existeCoord(lista,x,y) == false){
                     No no = new No();
-                    no = lista.criarNo(x, y, f);
+                    no = lista.criarNo(x,y,f);
                     lista.addLista(lista, no);
                 }
-                check = f;
+                else{
+                    No aux = lista.returnNo(lista,x,y);
+                    if(lista.existeID(aux,f) == false){
+                        aux.frequentadores.add(f);
+                    }
+                }
             }
             sc.close();
         }catch(FileNotFoundException e) {
             e.printStackTrace();
         }
         lista.printarLista(lista);
+        return lista;
     }
 }
