@@ -14,13 +14,13 @@ public class Grafico extends ApplicationFrame {
     protected Grafico(String applicationTitle , String chartTitle, Lista lista ){
         super(applicationTitle );
         JFreeChart barChart = ChartFactory.createBarChart(applicationTitle ,"IDs","Valores",
-                                                          createDataset(lista), PlotOrientation.VERTICAL, false, true, false);
+                                                          createDataset(lista,chartTitle), PlotOrientation.VERTICAL, false, true, false);
         ChartPanel chartPanel = new ChartPanel(barChart);
-        chartPanel.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        chartPanel.setPreferredSize(new java.awt.Dimension(1366, 768));
         setContentPane(chartPanel);
     }
 
-    protected CategoryDataset createDataset(Lista lista){
+    protected CategoryDataset createDataset(Lista lista, String desc){
         final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         if(lista.inicio == null) return null;
         else{
@@ -29,7 +29,7 @@ public class Grafico extends ApplicationFrame {
                 String cox = Integer.toString(aux.coordenada_x);
                 String coy = Integer.toString(aux.coordenada_y);
                 String concat = cox + "_" + coy;
-                dataset.addValue((aux.frequentadores.size()-1),concat,"Frequentadores");
+                dataset.addValue((aux.frequentadores.size()-1),concat,desc);
                 aux = aux.prox;
             }
         }
