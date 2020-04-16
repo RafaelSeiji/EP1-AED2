@@ -45,7 +45,8 @@ public class Main {
         Arquivo entrada = new Arquivo();
         Lista lista = new Lista();
         lista = entrada.extrair(caminho,opcao);
-        Grafico grafico = new Grafico("Grafico de pessoas", tituloGrafico, lista);
+        Lista lista2 = lista.contarCasos(lista);
+        Grafico grafico = new Grafico("Grafico de pessoas", tituloGrafico, lista2);
         grafico.pack();
         RefineryUtilities.centerFrameOnScreen(grafico);
         grafico.setVisible(true);

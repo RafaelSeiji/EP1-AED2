@@ -9,6 +9,8 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
+import java.util.Collections;
+
 public class Grafico extends ApplicationFrame {
 
     protected Grafico(String applicationTitle , String chartTitle, Lista lista ){
@@ -16,7 +18,7 @@ public class Grafico extends ApplicationFrame {
         JFreeChart barChart = ChartFactory.createBarChart(applicationTitle ,"IDs","Valores",
                                                           createDataset(lista,chartTitle), PlotOrientation.VERTICAL, false, true, false);
         ChartPanel chartPanel = new ChartPanel(barChart);
-        chartPanel.setPreferredSize(new java.awt.Dimension(1366, 768));
+        chartPanel.setPreferredSize(new java.awt.Dimension(900, 700));
         setContentPane(chartPanel);
     }
 
@@ -25,11 +27,21 @@ public class Grafico extends ApplicationFrame {
         if(lista.inicio == null) return null;
         else{
             No aux = lista.inicio;
+            float maior = 0;
+            while (aux.prox != null){
+                if(Collections.max(aux.frequentadores) > maior){
+                    maior = Collections.max(aux.frequentadores);
+                }
+                aux = aux.prox;
+            }
+            aux = lista.inicio;
             while (aux.prox != null){
                 String cox = Integer.toString(aux.coordenada_x);
                 String coy = Integer.toString(aux.coordenada_y);
                 String concat = cox + "_" + coy;
-                dataset.addValue((aux.frequentadores.size()-1),concat,desc);
+                if(aux.frequentadores.get(0) != 0){
+                    dataset.addValue(aux.frequentadores.get(0),concat,desc);
+                }
                 aux = aux.prox;
             }
         }

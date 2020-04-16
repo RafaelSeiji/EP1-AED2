@@ -72,4 +72,17 @@ public class Lista{
             atual = atual.prox;
         }
     }
+
+    static Lista contarCasos(Lista lista){
+        Lista output = new Lista();
+        No aux = lista.inicio;
+        while(aux != null){
+            int cont = (aux.frequentadores.size()-1);
+            No retorno = new No();
+            retorno = criarNo(aux.coordenada_x,aux.coordenada_y,(float) cont);
+            addLista(output,retorno);
+            aux = aux.prox;
+        }
+        return output;
+    }
 }
