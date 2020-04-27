@@ -10,39 +10,28 @@ import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Grafico extends ApplicationFrame {
 
-    protected Grafico(String applicationTitle , String chartTitle, Lista lista ){
+    protected Grafico(String applicationTitle , String chartTitle, HashMap<Integer,Integer> mapa ){
         super(applicationTitle );
-        JFreeChart barChart = ChartFactory.createBarChart(applicationTitle ,"IDs","Valores",
-                                                          createDataset(lista,chartTitle), PlotOrientation.VERTICAL, false, true, false);
+        JFreeChart barChart = ChartFactory.createBarChart(applicationTitle ,"Diferentes localizações","Pessoas por local",
+                                                          createDataset(mapa,chartTitle), PlotOrientation.VERTICAL, true, true, false);
         ChartPanel chartPanel = new ChartPanel(barChart);
         chartPanel.setPreferredSize(new java.awt.Dimension(900, 700));
         setContentPane(chartPanel);
     }
 
-    protected CategoryDataset createDataset(Lista lista, String desc){
+    protected CategoryDataset createDataset(HashMap<Integer,Integer> mapa, String desc){
         final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        if(lista.inicio == null) return null;
+        if(mapa.isEmpty()) return null;
         else{
-            No aux = lista.inicio;
-            float maior = 0;
-            while (aux.prox != null){
-                if(Collections.max(aux.frequentadores) > maior){
-                    maior = Collections.max(aux.frequentadores);
-                }
-                aux = aux.prox;
-            }
-            aux = lista.inicio;
-            while (aux.prox != null){
-                String cox = Integer.toString(aux.coordenada_x);
-                String coy = Integer.toString(aux.coordenada_y);
-                String concat = cox + "_" + coy;
-                if(aux.frequentadores.get(0) != 0){
-                    dataset.addValue(aux.frequentadores.get(0),concat,desc);
-                }
-                aux = aux.prox;
+            Iterator it = mapa.entrySet().iterator();
+            for(Map.Entry<Integer,Integer> pair : mapa.entrySet()){
+                dataset.addValue(pair.getKey(),pair.getValue(),desc);
             }
         }
         return dataset;

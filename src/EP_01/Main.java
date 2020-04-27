@@ -3,6 +3,8 @@ package EP_01;
 import org.jfree.chart.demo.BarChartDemo1;
 import org.jfree.ui.RefineryUtilities;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -46,7 +48,8 @@ public class Main {
         Lista lista = new Lista();
         lista = entrada.extrair(caminho,opcao);
         Lista lista2 = lista.contarCasos(lista);
-        Grafico grafico = new Grafico("Grafico de pessoas", tituloGrafico, lista2);
+        HashMap<Integer,Integer> mapa = lista2.contarLocal(lista2);
+        Grafico grafico = new Grafico("Grafico de pessoas", tituloGrafico, mapa);
         grafico.pack();
         RefineryUtilities.centerFrameOnScreen(grafico);
         grafico.setVisible(true);

@@ -85,4 +85,24 @@ public class Lista{
         }
         return output;
     }
+
+    static HashMap<Integer, Integer> contarLocal(Lista lista){
+        HashMap<Integer,Integer> list = new HashMap();
+        No percorre = lista.inicio;
+        int casos = Math.round(percorre.frequentadores.get(0));
+        list.put(casos,1);
+        percorre = percorre.prox;
+        while(percorre != null){
+            casos = Math.round(percorre.frequentadores.get(0));
+            if(list.containsKey(casos)){
+                int old = list.get(casos);
+                list.put(casos,old+1);
+            }
+            else{
+                list.put(casos,1);
+            }
+            percorre = percorre.prox;
+        }
+        return list;
+    }
 }
