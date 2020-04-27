@@ -21,22 +21,22 @@ public class Main {
             switch (opcao){
                 case 1:
                     System.out.println("Opcao selecionada com sucesso");
-                    tituloGrafico = "Pessoas por domicilio";
+                    tituloGrafico = "Diferentes domicilios";
                     valida = 0;
                     break;
                 case 2:
                     System.out.println("Opcao selecionada com sucesso");
-                    tituloGrafico = "Pessoas por escola";
+                    tituloGrafico = "Diferentes escolas";
                     valida = 0;
                     break;
                 case 3:
                     System.out.println("Opcao selecionada com sucesso");
-                    tituloGrafico = "Pessoas por 1° trabalho";
+                    tituloGrafico = "Diferentes locais de 1° trabalho";
                     valida = 0;
                     break;
                 case 4:
                     System.out.println("Opcao selecionada com sucesso");
-                    tituloGrafico = "Pessoas por 2° trabalho";
+                    tituloGrafico = "Diferentes locais de 2° trabalho";
                     valida = 0;
                     break;
                 default:

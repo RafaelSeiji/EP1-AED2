@@ -18,7 +18,7 @@ public class Grafico extends ApplicationFrame {
 
     protected Grafico(String applicationTitle , String chartTitle, HashMap<Integer,Integer> mapa ){
         super(applicationTitle );
-        JFreeChart barChart = ChartFactory.createBarChart(applicationTitle ,"Diferentes localizações","Pessoas por local",
+        JFreeChart barChart = ChartFactory.createBarChart(applicationTitle ,"IDs das localizacoes","Pessoas por local",
                                                           createDataset(mapa,chartTitle), PlotOrientation.VERTICAL, true, true, false);
         ChartPanel chartPanel = new ChartPanel(barChart);
         chartPanel.setPreferredSize(new java.awt.Dimension(900, 700));
