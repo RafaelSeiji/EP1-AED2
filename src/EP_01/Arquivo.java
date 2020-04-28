@@ -38,6 +38,7 @@ public class Arquivo{
             default:
                 v1 = -1;
                 v2 = -1;
+                System.out.println("Colunas inexistentes");
         }
 
         try{

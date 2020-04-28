@@ -46,9 +46,8 @@ public class Main {
         }
         Arquivo entrada = new Arquivo();
         Lista lista = new Lista();
-        lista = entrada.extrair(caminho,opcao);
-        Lista lista2 = lista.contarCasos(lista);
-        HashMap<Integer,Integer> mapa = lista2.contarLocal(lista2);
+        lista = lista.contarCasos(entrada.extrair(caminho,opcao));
+        HashMap<Integer,Integer> mapa = lista.contarLocal(lista);
         Grafico grafico = new Grafico("Grafico de pessoas", tituloGrafico, mapa);
         grafico.pack();
         RefineryUtilities.centerFrameOnScreen(grafico);
