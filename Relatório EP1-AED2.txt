@@ -1,0 +1,10 @@
+﻿Gabriel Brandão
+Rafael Tomanari
+
+
+Relatório
+
+
+        O primeiro EP deste semestre consistia em trabalhar em cima de uma longa planilha, resultado de uma pesquisa sobre locomoção realizada em 2017. Assim, já havia um desafio logo de cara: como ler esse arquivo. Usando a linguagem de programação java, experimentamos a biblioteca File e não tivemos muitos problemas. Em seguida, nossa tarefa era filtrar os diversos dados no arquivo e guardar apenas o que nos interessava, os IDs pessoais e as coordenadas dos locais frequentados. Descobrimos que o arquivo era lido por linha pelo Scanner e que cada coluna era separada por vírgula. Assim só precisávamos saber em qual coluna estava a informação desejada, “contando” as vírgulas até chegar à coluna desejada. Com isso os dados foram guardados em nós de uma lista ligada. 
+        Para desenvolver o histograma, em um primeiro momento, foi criado uma segunda lista ligada em que cada nó armazenava um local e um contador de ocorrências (pessoas que passaram por lá). Porém o gráfico não ficou da maneira que deveria, interpretamos o enunciado do EP de maneira equivocada. Então para arrumar foi criado um HashMap na qual a chave é o número de pessoas que visitaram o lugar e o valor é o número de lugares que tem aquela chave. Dessa maneira conseguimos obter o gráfico desejado, mostrando quantos lugares foram visitados por certo número de pessoas.
+        Dois foram nossos maiores desafios neste EP, usar a ferramenta JFreeChart para criar gráficos e corrigir os erros que cometemos no meio do caminho, além de tentar deixar o código organizado. No primeiro, como nenhum de nós havia tido contado com a ferramenta de gerar gráficos, tivemos que aprender na marra e conseguir adicionar ele com sucesso à plataforma de desenvolvimento que utilizamos. No segundo, ao deixar o código mais legível, foi bem mais fácil de entender o que havia de errado e como arrumar.
